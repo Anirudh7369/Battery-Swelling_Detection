@@ -33,10 +33,9 @@ split = int(0.8*len(X_windows))
 X_train,X_test = X_windows[:split],X_windows[split:]
 y_train,y_test = y_windows[:split],y_windows[split:]
 
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM,Dropout,Dense
-from tensorflow.keras.optimizers import Adam
+from keras.models import Sequential
+from keras.layers import LSTM, Dropout, Dense
+from keras.optimizers import Adam
 
 time_steps = X_train.shape[1]
 num_features = X_train.shape[2]
@@ -57,7 +56,7 @@ model.compile(
 )
 model.summary()
 
-from tensorflow.keras.callbacks import EarlyStopping,ModelCheckpoint
+from keras.callbacks import EarlyStopping, ModelCheckpoint
 
 es = EarlyStopping(monitor='val_loss',patience=1,restore_best_weights=True)
 mc = ModelCheckpoint("best_model.h5", save_best_only=True)
